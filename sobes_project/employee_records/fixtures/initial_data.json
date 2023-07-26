@@ -1,0 +1,80 @@
+[
+{
+    "model": "employee_records.employee",
+    "pk": 1,
+    "fields": {
+        "name": "John",
+        "surname": "Smith",
+        "job_title": "Project Manager",
+        "chief": []
+    }
+},
+{
+    "model": "employee_records.employee",
+    "pk": 2,
+    "fields": {
+        "name": "A1",
+        "surname": "A1",
+        "job_title": "Tech Lead",
+        "chief": [
+            1
+        ]
+    }
+},
+{
+    "model": "employee_records.employee",
+    "pk": 3,
+    "fields": {
+        "name": "A2",
+        "surname": "A2",
+        "job_title": "Team Lead",
+        "chief": [
+            1
+        ]
+    }
+},
+{
+    "model": "employee_records.employee",
+    "pk": 4,
+    "fields": {
+        "name": "C1",
+        "surname": "C1",
+        "job_title": "Mid Dev",
+        "chief": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "employee_records.employee",
+    "pk": 5,
+    "fields": {
+        "name": "D1",
+        "surname": "D1",
+        "job_title": "Jun Dev",
+        "chief": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "employee_records.employee",
+    "pk": 10,
+    "fields": {
+        "name": "D2",
+        "surname": "D2",
+        "job_title": "Jun Dev",
+        "chief": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+}
+]
