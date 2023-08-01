@@ -14,9 +14,9 @@ class SubordinateInline(admin.TabularInline):
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     model = Person
-    search_fields = ('name', 'surname',)
-        # ('job_title')
-    # list_filter = ('job_title',)
+    search_fields = ('name', 'surname', 'job_title')
+
+    list_filter = ('job_title',)
     inlines = (SubordinateInline,)
 
     class Meta:
