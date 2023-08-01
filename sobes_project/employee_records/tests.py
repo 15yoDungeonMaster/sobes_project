@@ -35,6 +35,8 @@ class AuthCRUDTestCase(APITestCase):
         cls.user.set_password('12345')
         cls.user.save()
         cls.token_url = reverse('token')
+        cls.employee_list_url = reverse('employee-list')
+        cls.employee_url = reverse('employee-retrieve', kwargs={'pk': 1})
         cls.headers = dict()
 
     def setUp(self):
@@ -43,7 +45,7 @@ class AuthCRUDTestCase(APITestCase):
         self.headers['Authorization'] = f'Bearer {response_data["access"]}'
 
     def test_retrieve_employee(self):
-        response = self.client.get('/api/employee_records/1/', headers=self.headers)
+        response = self.client.get(self.employee_url, headers=self.headers)
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Project Manager')
@@ -52,23 +54,20 @@ class AuthCRUDTestCase(APITestCase):
         data = {'name': 'Test',
                 'surname': 'Employee',
                 'job_title': 'Test Job Title',
-                'employees': [],
-                'chief': [1, ]}
-        response = self.client.post('/api/employee_records/',
+                'chiefs': [1, ]}
+        response = self.client.post(self.employee_list_url,
                                     headers=self.headers,
                                     data=data)
         self.assertEqual(response.status_code, 201)
         self.assertContains(response, 'Test', status_code=201)
 
     def test_delete_employee(self):
-        employee_url = '/api/employee_records/1/'
-        response = self.client.delete(employee_url, headers=self.headers)
+        response = self.client.delete(self.employee_url, headers=self.headers)
         self.assertEqual(response.status_code, 204)
 
     def test_update_employee(self):
-        employee_url = '/api/employee_records/1/'
         data = {'name': 'TestUpdate'}
-        response = self.client.patch(employee_url, data=data, headers=self.headers)
+        response = self.client.patch(self.employee_url, data=data, headers=self.headers)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'TestUpdate')
 

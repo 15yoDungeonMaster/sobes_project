@@ -1,13 +1,13 @@
-from django.urls import path, include
+from django.urls import path
 
-from .views import EmployeeViewSet
+from .views import EmployeeListAPIView, EmployeeRetrieveAPIView
 
-from rest_framework.routers import DefaultRouter
 
-router = DefaultRouter()
-router.register('employee_records', EmployeeViewSet)
+
+
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('list/', EmployeeListAPIView.as_view(), name='employee-list'),
+    path('employee/<int:pk>/', EmployeeRetrieveAPIView.as_view(), name='employee-retrieve'),
 
 ]

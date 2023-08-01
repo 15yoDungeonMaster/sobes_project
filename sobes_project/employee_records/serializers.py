@@ -1,16 +1,32 @@
+from rest_framework import serializers
 
-from rest_framework.serializers import ModelSerializer, Serializer
-
-from employee_records.models import Employee
+from employee_records.models import Person, Subordination
 
 
-class EmployeeSerializer(ModelSerializer):
+class PersonSerializer(serializers.ModelSerializer):
+    employees = serializers.SerializerMethodField()
+
     class Meta:
-        model = Employee
-        fields = ('id', 'name', 'surname', 'job_title', 'chief', 'employees',)
+        model = Person
+        fields = ('id', 'name', 'surname', 'job_title', 'chiefs', 'employees')
 
-    def to_representation(self, instance):
-        data = super(EmployeeSerializer, self).to_representation(instance)
-        chief_data = data.pop('chief')
-        data['chiefs'] = chief_data
+    def get_employees(self, obj):
+        data = [
+            {
+                'id': person.id,
+                'name': person.name,
+                'surname': person.surname,
+                'job_title': person.job_title,
+            }
+
+            for person in obj.subordination.employee.all()
+        ]
         return data
+
+    def create(self, validated_data):
+        chiefs = validated_data.pop('chiefs')
+        instance = Person.objects.create(**validated_data)
+        Subordination.objects.create(person=instance)
+        instance.chiefs.set(chiefs)
+        return instance
+

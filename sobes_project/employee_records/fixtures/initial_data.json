@@ -1,80 +1,166 @@
 [
 {
-    "model": "employee_records.employee",
+    "model": "employee_records.person",
     "pk": 1,
-    "fields": {
-        "name": "John",
-        "surname": "Smith",
-        "job_title": "Project Manager",
-        "chief": []
-    }
-},
-{
-    "model": "employee_records.employee",
-    "pk": 2,
     "fields": {
         "name": "A1",
         "surname": "A1",
-        "job_title": "Tech Lead",
-        "chief": [
-            1
-        ]
+        "job_title": "Project Manager"
     }
 },
 {
-    "model": "employee_records.employee",
+    "model": "employee_records.person",
+    "pk": 2,
+    "fields": {
+        "name": "B1",
+        "surname": "B1",
+        "job_title": "Tech Lead"
+    }
+},
+{
+    "model": "employee_records.person",
     "pk": 3,
     "fields": {
-        "name": "A2",
-        "surname": "A2",
-        "job_title": "Team Lead",
-        "chief": [
-            1
-        ]
+        "name": "B2",
+        "surname": "B2",
+        "job_title": "Team Lead"
     }
 },
 {
-    "model": "employee_records.employee",
+    "model": "employee_records.person",
     "pk": 4,
     "fields": {
         "name": "C1",
         "surname": "C1",
-        "job_title": "Mid Dev",
-        "chief": [
-            1,
-            2,
-            3
-        ]
+        "job_title": "Mid Dev"
     }
 },
 {
-    "model": "employee_records.employee",
+    "model": "employee_records.person",
     "pk": 5,
+    "fields": {
+        "name": "C2",
+        "surname": "C2",
+        "job_title": "Mid Dev"
+    }
+},
+{
+    "model": "employee_records.person",
+    "pk": 6,
     "fields": {
         "name": "D1",
         "surname": "D1",
-        "job_title": "Jun Dev",
-        "chief": [
-            1,
+        "job_title": "Jun Dev"
+    }
+},
+{
+    "model": "employee_records.person",
+    "pk": 7,
+    "fields": {
+        "name": "D2",
+        "surname": "D2",
+        "job_title": "Jun Dev"
+    }
+},
+{
+    "model": "employee_records.person",
+    "pk": 17,
+    "fields": {
+        "name": "D3",
+        "surname": "D3",
+        "job_title": "Jun Dev"
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 1,
+    "fields": {
+        "person": 1,
+        "employee": [
             2,
             3,
-            4
+            4,
+            5,
+            6,
+            7,
+            17
         ]
     }
 },
 {
-    "model": "employee_records.employee",
-    "pk": 10,
+    "model": "employee_records.subordination",
+    "pk": 2,
     "fields": {
-        "name": "D2",
-        "surname": "D2",
-        "job_title": "Jun Dev",
-        "chief": [
-            1,
-            2,
-            3,
-            4
+        "person": 2,
+        "employee": [
+            4,
+            5,
+            6,
+            7,
+            17
         ]
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 3,
+    "fields": {
+        "person": 3,
+        "employee": [
+            4,
+            5,
+            6,
+            7,
+            17
+        ]
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 4,
+    "fields": {
+        "person": 4,
+        "employee": [
+            6,
+            7,
+            17
+        ]
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 5,
+    "fields": {
+        "person": 5,
+        "employee": [
+            6,
+            7,
+            17
+        ]
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 6,
+    "fields": {
+        "person": 6,
+        "employee": []
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 7,
+    "fields": {
+        "person": 7,
+        "employee": []
+    }
+},
+{
+    "model": "employee_records.subordination",
+    "pk": 13,
+    "fields": {
+        "person": 17,
+        "employee": []
     }
 }
 ]

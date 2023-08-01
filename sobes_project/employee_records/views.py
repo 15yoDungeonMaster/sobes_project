@@ -1,15 +1,22 @@
 
-from rest_framework.decorators import permission_classes
-from rest_framework.permissions import AllowAny, IsAuthenticated
-from rest_framework.viewsets import ModelViewSet
-
-from employee_records.models import Employee
-from employee_records.serializers import EmployeeSerializer
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 
 
+from employee_records.models import Person
+from employee_records.serializers import PersonSerializer
 
-@permission_classes([IsAuthenticated])
-class EmployeeViewSet(ModelViewSet):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
+
+class EmployeeListAPIView(ListCreateAPIView):
+    """List of employees"""
+    queryset = Person.objects.prefetch_related('subordination').all()
+    serializer_class = PersonSerializer
+    permission_classes = (IsAuthenticated, )
+
+
+class EmployeeRetrieveAPIView(RetrieveUpdateDestroyAPIView):
+    """Employee detail view"""
+    queryset = Person.objects.prefetch_related('subordination').all()
+    serializer_class = PersonSerializer
+    permission_classes = (IsAuthenticated, )
 
