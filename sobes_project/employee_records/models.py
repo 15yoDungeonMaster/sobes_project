@@ -12,7 +12,7 @@ class Person(models.Model):
 
 
 class Subordination(models.Model):
-    person = models.OneToOneField(Person, blank=True, null=False, on_delete=models.CASCADE)
+    person = models.OneToOneField(Person, blank=False, null=False, on_delete=models.CASCADE)
     # job_title = models.CharField(max_length=100, blank=False, null=False)
     employee = models.ManyToManyField(Person, blank=True, related_name='chiefs')
 
